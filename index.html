@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Kizito Autos</title>
+
+    <!-- INTERNAL CSS: EACH RULE WRITTEN VERTICALLY -->
+    <style>
+
+        :root {
+            --navy: #06142b;
+            --blue: #0867e8;
+            --red: #e91f39;
+            --ink: #13223b;
+            --muted: #65748b;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f2f6fb;
+            color: var(--ink);
+            line-height: 1.55;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .top {
+            background: var(--navy);
+            padding: 12px max(18px, calc((100vw - 1220px) / 2));
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .brand {
+            width: min(320px, 100%);
+            height: auto;
+        }
+
+        .top-contact {
+            color: white;
+            font-weight: bold;
+        }
+
+        nav {
+            background: #0b2852;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 3px;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px 21px;
+            font-weight: bold;
+        }
+
+        nav a:hover,
+        nav a.active {
+            background: var(--blue);
+        }
+
+        .hero {
+            background: linear-gradient(105deg, #06142b 15%, #0d356b 100%);
+            color: white;
+            display: grid;
+            grid-template-columns: 1fr 1.05fr;
+            align-items: center;
+            min-height: 420px;
+        }
+
+        .hero-copy {
+            padding: 50px max(24px, calc((100vw - 1220px) / 2));
+            padding-right: 25px;
+        }
+
+        .hero h1 {
+            font-size: clamp(34px, 4vw, 62px);
+            line-height: 1.08;
+            margin: 0 0 20px;
+        }
+
+        .accent {
+            color: #ff3a53;
+        }
+
+        .hero img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .button {
+            display: inline-block;
+            background: var(--red);
+            color: white;
+            border-radius: 8px;
+            padding: 12px 18px;
+            margin: 6px 6px 6px 0;
+            font-weight: bold;
+        }
+
+        .button.secondary {
+            background: var(--blue);
+        }
+
+        .wrap {
+            max-width: 1220px;
+            margin: auto;
+            padding: 35px 18px;
+        }
+
+        .page-title {
+            text-align: center;
+            color: #0a2c60;
+            font-size: 34px;
+        }
+
+        .intro {
+            text-align: center;
+            color: var(--muted);
+        }
+
+        .model-links {
+            display: flex;
+            gap: 9px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px 0 30px;
+        }
+
+        .model-links a {
+            background: white;
+            border: 1px solid #cad9ed;
+            color: #0a428e;
+            padding: 9px 15px;
+            border-radius: 30px;
+            font-weight: bold;
+        }
+
+        .model-section {
+            margin: 35px 0 50px;
+        }
+
+        .model-section h2 {
+            border-left: 5px solid var(--red);
+            padding-left: 13px;
+            color: #092e63;
+        }
+
+        .year-title {
+            color: #1e4779;
+            margin: 30px 0 14px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+            gap: 16px;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #d9e4f1;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 16px #092e6310;
+        }
+
+        .photo {
+            width: 100%;
+            height: 190px;
+            object-fit: contain;
+            background: #e7eef8;
+            display: block;
+        }
+
+        .placeholder {
+            min-height: 190px;
+            background: linear-gradient(135deg, #d9e8fc, #f5f8fc);
+            color: #356397;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        .card-body {
+            padding: 17px;
+        }
+
+        .card h3 {
+            margin: 0 0 7px;
+            font-size: 18px;
+        }
+
+        .price {
+            font-weight: bold;
+            color: #d41d37;
+        }
+
+        .small {
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .card .button {
+            font-size: 13px;
+            padding: 10px 12px;
+        }
+
+        .notice {
+            padding: 16px;
+            background: #e3efff;
+            border-left: 5px solid var(--blue);
+            border-radius: 6px;
+        }
+
+        .feature {
+            background: #092957;
+            color: white;
+            padding: 24px;
+            border-radius: 12px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin: 16px 0 6px;
+        }
+
+        input,
+        select,
+        textarea {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #b8cbe2;
+            border-radius: 7px;
+            font: inherit;
+        }
+
+        form {
+            background: white;
+            max-width: 680px;
+            padding: 25px;
+            margin: 25px auto;
+            border-radius: 12px;
+        }
+
+        button {
+            border: 0;
+            cursor: pointer;
+            font: inherit;
+        }
+
+        footer {
+            background: var(--navy);
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        @media (max-width: 700px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero img {
+                height: 270px;
+            }
+
+            .hero-copy {
+                padding: 34px 20px;
+            }
+
+            nav a {
+                padding: 11px 12px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="top">
+        <a href="index.html">
+            <img class="brand" src="images/logo.svg" alt="Kizito Autos logo">
+        </a>
+        <a class="top-contact" href="https://wa.me/2349125967961">Call / WhatsApp: 09125967961</a>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="toyota.html">Toyota</a>
+        <a href="lexus.html">Lexus</a>
+        <a href="enquiry.html">Enquiry Form</a>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="hero-copy">
+                <h1>QUALITY <span class="accent">TOYOTA</span> &amp; LEXUS PARTS</h1>
+                <p>Headlights, backlights, bumpers, grilles, fenders, side mirrors and more. Contact us for current prices.</p>
+                <a class="button" href="toyota.html">Browse Toyota Parts</a>
+                <a class="button secondary" href="lexus.html">Browse Lexus Parts</a>
+            </div>
+            <img src="images/hilux-hero-concept.jpg" alt="Stylised Toyota Hilux 2022 concept image from approved homepage design">
+        </section>
+
+        <section class="wrap">
+            <h2 class="page-title">Shop by Category</h2>
+            <div class="grid">
+                <article class="feature">
+                    <h3>Headlight</h3>
+                    <p>Browse by car model and year.</p>
+                    <a class="button secondary" href="toyota.html">View Toyota</a>
+                    <a class="button" href="lexus.html">View Lexus</a>
+                </article>
+                <article class="feature">
+                    <h3>Backlight / Tail light</h3>
+                    <p>Browse by car model and year.</p>
+                    <a class="button secondary" href="toyota.html">View Toyota</a>
+                    <a class="button" href="lexus.html">View Lexus</a>
+                </article>
+                <article class="feature">
+                    <h3>Boot light</h3>
+                    <p>Browse by car model and year.</p>
+                    <a class="button secondary" href="toyota.html">View Toyota</a>
+                    <a class="button" href="lexus.html">View Lexus</a>
+                </article>
+                <article class="feature">
+                    <h3>Front bumper</h3>
+                    <p>Browse by car model and year.</p>
+                    <a class="button secondary" href="toyota.html">View Toyota</a>
+                    <a class="button" href="lexus.html">View Lexus</a>
+                </article>
+                <article class="feature">
+                    <h3>Rear bumper</h3>
+                    <p>Browse by car model and year.</p>
+                    <a class="button secondary" href="toyota.html">View Toyota</a>
+                    <a class="button" href="lexus.html">View Lexus</a>
+                </article>
+                <article class="feature">
+                    <h3>Front grille</h3>
+                    <p>Browse by car model and year.</p>
+                    <a class="button secondary" href="toyota.html">View Toyota</a>
+                    <a class="button" href="lexus.html">View Lexus</a>
+                </article>
+                <article class="feature">
+                    <h3>Fender</h3>
+                    <p>Browse by car model and year.</p>
+                    <a class="button secondary" href="toyota.html">View Toyota</a>
+                    <a class="button" href="lexus.html">View Lexus</a>
+                </article>
+                <article class="feature">
+                    <h3>Side mirror</h3>
+                    <p>Browse by car model and year.</p>
+                    <a class="button secondary" href="toyota.html">View Toyota</a>
+                    <a class="button" href="lexus.html">View Lexus</a>
+                </article>
+                <article class="feature">
+                    <h3>Fog light</h3>
+                    <p>Browse by car model and year.</p>
+                    <a class="button secondary" href="toyota.html">View Toyota</a>
+                    <a class="button" href="lexus.html">View Lexus</a>
+                </article>
+            </div>
+        </section>
+
+        <section class="wrap">
+            <h2 class="page-title">Photos You Supplied</h2>
+            <p class="intro">These are genuine grouped product photos. Each individual part has its own listing in the catalogues.</p>
+            <div class="grid">
+                <article class="card">
+                    <img class="photo" src="images/venza-parts.jpg" alt="Toyota Venza headlights, grille, and fog lamp parts">
+                    <div class="card-body">
+                        <h3>Toyota Venza Parts</h3>
+                        <p>Headlights, grille, fog lights and surrounds</p>
+                        <p class="price">Contact for Price</p>
+                        <a class="button" href="https://wa.me/2349125967961?text=Hello%2C%20I%20want%20Toyota%20Venza%20parts">Enquire on WhatsApp</a>
+                    </div>
+                </article>
+                <article class="card">
+                    <img class="photo" src="images/camry-2010-lights.jpg" alt="Toyota Camry 2010 headlights, backlights, and boot lights">
+                    <div class="card-body">
+                        <h3>Toyota Camry 2010 Lights</h3>
+                        <p>Headlights, backlights and boot lights</p>
+                        <p class="price">Contact for Price</p>
+                        <a class="button" href="https://wa.me/2349125967961?text=Hello%2C%20I%20want%20Camry%202010%20lights">Enquire on WhatsApp</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="wrap">
+            <div class="feature">
+                <h2>Need a price?</h2>
+                <p>Tell us the model, year, part, and preferred grade (Dubai DEPO or China aftermarket).</p>
+                <a class="button" href="enquiry.html">Open Enquiry Form</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Kizito Autos · Toyota &amp; Lexus Exterior Body Parts</p>
+        <p>WhatsApp: 09125967961 · All prices available on enquiry</p>
+    </footer>
+</body>
+
+</html>
